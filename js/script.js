@@ -72,20 +72,5 @@ const selection = (PlayerSelection, cpuSelection) => {
     }
 }
 
-const game = () => {
-    for (let i = 0; i < 5; i++) {
-        selection("scissor", computerPlay());
-    }
-    if (playWinCount > compWinCount) {
-        console.log("You Win!! Congrats");
+selection("scissor", computerPlay());
 
-    } else if (compWinCount > playWinCount) {
-        console.log("Computer wins!!");
-    } else {
-        console.log("It's a tie");
-    }
-}
-game();
-
-
-//  Took Time: 1hr as a beginner

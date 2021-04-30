@@ -1,0 +1,23 @@
+/* Dotted btn */
+
+.dotted-btn{
+    border: 2px dotted;
+}
+.wrapper svg{
+    transition: all 300ms ease-in;
+}
+
+.wrapper path{
+ fill:#fff;
+}
+.wrapper .bg-warning path{
+    fill: #222;
+}
+
+.wrapper .icon-wrapper{
+    cursor: pointer;
+}
+
+.wrapper .icon-wrapper:hover svg{
+ transform: scale(1.2);
+ }

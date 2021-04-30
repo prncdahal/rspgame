@@ -72,5 +72,4 @@ const selection = (PlayerSelection, cpuSelection) => {
     }
 }
 
-selection("scissor", computerPlay());
-
+selection("scissor", computerPlay()); 

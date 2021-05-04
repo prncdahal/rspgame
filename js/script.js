@@ -1,75 +1,51 @@
-// Algorithm, Pseudo code and planning to solve the problem before diving right in to the code
-// Rock Paper scissors
-// Process: rock beat scissors, scissors beat paper, paper beat rock
+const playerSelectionBtns = document.querySelectorAll('#user-select-option .btn');
+const computerSelectionBtns = document.querySelectorAll('#computer-selection .btn');
 
-// 1 step: get the value of user: PlayerSelection
-// 2 step: get the random value of cpu: computerSelection
-// 3: check the user input and cpu return value: 
+const playerScoreCount = document.querySelector('#player-score .count');
+const ComputerScoreCount = document.querySelector('#computer-score .count');
 
-// rock=rock => tie
-// rock=paper => paper wins
-// rock=scissor => rock wins
+let playerScore = 0;
+let ComputerScore = 0;
 
-// paper=rock => paper wins
-// paper=paper=> tie
-// paper=> scissors=> scissors win
+// click event does not work with querySelectorAll so have to use forEach method to get each item
+playerSelectionBtns.forEach(function(playerSelectionBtn, index) {
+	playerSelectionBtn.addEventListener('click', function(e) {
+		const clickedBtn = this.getAttribute("title"); // Detecting clicked button by attribute.
+		const getComputerSelection = computerSelectionBtns[Math.floor(Math.random() * 3)].getAttribute("title");
+		if (clickedBtn === "Rock" && getComputerSelection === "Rock") {
+			alert("tie");
 
-// scissor = rock =>rock wins
-// scissors= paper=>paper wins
-// scissors=scissor=>tie
+		} else if (clickedBtn === "Rock" && getComputerSelection === "Paper") {
+			alert("Computer Wins!");
+            ComputerScore=ComputerScore+1;
+            ComputerScoreCount.textContent=ComputerScore;
 
-// ### Problem 2
-/**Write a NEW function called game(). Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
- * 
- * 
- */
-
-
-
-const computerPlay = () => {
-    let option = ["rock", "paper", "scissor"];
-    let value = Math.floor(option.length * Math.random());
-    return option[value];
-}
-
-computerPlay();
-
-let playWinCount = 0;
-let compWinCount = 0;
-const selection = (PlayerSelection, cpuSelection) => {
-
-
-    if (PlayerSelection === "Rock" && cpuSelection === "Rock") {
-        console.log("Tie");
-    } else if (PlayerSelection === "Rock" && cpuSelection === "Paper") {
-        console.log("Computer wins");
-        compWinCount++;
-    } else if (PlayerSelection === "Rock" && cpuSelection === "Scissor") {
-        console.log("You Win!!");
-        playWinCount++;
-    }
-
-    if (PlayerSelection === "paper" && cpuSelection === "rock") {
-
-      console.log("You Win!!");
-      playWinCount++;
-
-    } else if (PlayerSelection === "paper" && cpuSelection === "Paper") {
-        console.log("Tie");
-    } else if (PlayerSelection === "paper" && cpuSelection === "scissor") {
-        console.log("Computer Win");
-        compWinCount++;
-    }
-
-    if (PlayerSelection === "scissor" && cpuSelection === "rock") {
-        console.log("Computer Win!!");
-        compWinCount++;
-    } else if (PlayerSelection === "scissor" && cpuSelection === "paper") {
-        console.log("You Win!!");
-        playWinCount++;
-    } else if (PlayerSelection === "scissor" && cpuSelection === "scissor") {
-        console.log("Tie");
-    }
-}
-
-selection("scissor", computerPlay()); 
+		} else if (clickedBtn === "Rock" && getComputerSelection === "Scissor") {
+			alert("You Win!!");
+            playerScore=playerScore+1;
+            playerScoreCount.textContent=playerScore;
+		}
+		if (clickedBtn === "Paper" && getComputerSelection === "Rock") {
+			alert("You Win");
+            playerScore = playerScore + 1;
+            playerScoreCount.textContent=playerScore;
+		} else if (clickedBtn === "Paper" && getComputerSelection === "Paper") {
+			alert("Tie");
+		} else if (clickedBtn === "Paper" && getComputerSelection === "Scissor") {
+			alert("Computer Win");
+            ComputerScore=ComputerScore+1;
+            ComputerScoreCount.textContent=ComputerScore;
+		}
+		if (clickedBtn === "Scissor" && getComputerSelection === "Rock") {
+			alert("You Win");
+            playerScore=playerScore+1;
+            playerScoreCount.textContent=playerScore;
+		} else if (clickedBtn === "Scissor" && getComputerSelection === "Paper") {
+			alert("Tie");
+		} else if (clickedBtn === "Scissor" && getComputerSelection === "Scissor") {
+			alert("Computer Win");
+            ComputerScore=ComputerScore+1;
+            ComputerScoreCount.textContent=ComputerScore;
+		}
+	});
+});
